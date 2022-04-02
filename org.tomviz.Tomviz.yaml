@@ -5,7 +5,7 @@ runtime-version: '5.15-21.08'
 command: tomviz
 #For CastXML
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm11
+  - org.freedesktop.Sdk.Extension.llvm13
 # GLEW does not support Wayland yet.
 finish-args:
   - --share=ipc
@@ -287,9 +287,6 @@ modules:
       - -DCMAKE_CXX_STANDARD_REQUIRED:BOOL=ON
       - -DPARAVIEW_ENABLE_LOOKINGGLASS:BOOL=OFF
       - -DPARAVIEW_PLUGIN_ENABLE_LookingGlass:BOOL=OFF
-      #- -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=${VTK_SMP_IMPLEMENTATION_TYPE}
-      #- -DHoloPlayCore_INCLUDE_DIR:PATH=${HoloPlayCore_INCLUDE_DIR}
-      #- -DHoloPlayCore_LIBRARY:PATH=${HoloPlayCore_LIBRARY}
       - -DCMAKE_INSTALL_NAME_DIR=/app/lib
     post-install:
       - rm -r ${FLATPAK_DEST}/share/icons/hicolor/*/apps/paraview.png
