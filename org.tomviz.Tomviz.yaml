@@ -1,7 +1,7 @@
 app-id: org.tomviz.Tomviz
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
-runtime-version: '5.15'
+runtime-version: '5.15-21.08'
 command: tomviz
 #For CastXML
 sdk-extensions:
@@ -28,6 +28,9 @@ modules:
     #cmake-ninja does not work
   - name: CastXML
     buildsystem: cmake
+    build-options:
+      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
+      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     config-opts:
       - -DCLANG_LINK_CLANG_DYLIB:BOOL=ON
       - -DLLVM_DIR=/usr/lib/sdk/llvm11/lib/cmake/llvm
@@ -46,6 +49,9 @@ modules:
   - name: Eigen3
     buildsystem: cmake-ninja
     builddir: true
+    build-options:
+      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
+      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     sources:
       - type: archive
         url: https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
@@ -61,6 +67,9 @@ modules:
   - name: lapack
     buildsystem: cmake-ninja
     builddir: true
+    build-options:
+      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
+      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=ON
@@ -184,6 +193,9 @@ modules:
 
   - name: TBB
     buildsystem: cmake
+    build-options:
+      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
+      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     builddir: true
     sources:
       - type: archive
@@ -196,6 +208,9 @@ modules:
           url-template: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v$version.tar.gz
 
   - name: SWIG
+    build-options:
+      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
+      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     config-opts:
       - --without-pcre
       - --disable-ccache
@@ -220,6 +235,9 @@ modules:
 
   - name: gdcm
     buildsystem: cmake-ninja
+    build-options:
+      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
+      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     builddir: true
     config-opts:
       - -DGDCM_BUILD_APPLICATIONS=OFF
@@ -246,6 +264,9 @@ modules:
     # ParaView does not support ARM CPU yet.
   - name: OpenChemistry-Paraview
     buildsystem: cmake
+    build-options:
+      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
+      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     builddir: true
     config-opts:
       - -DPARAVIEW_BUILD_QT_GUI:BOOL=ON
@@ -285,6 +306,9 @@ modules:
 
   - name: ITK
     buildsystem: cmake
+    build-options:
+      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
+      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE:STRING=Release
@@ -322,6 +346,9 @@ modules:
 
   - name: Tomviz
     buildsystem: cmake
+    build-options:
+      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
+      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE:STRING=Release
