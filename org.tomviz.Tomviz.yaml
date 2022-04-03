@@ -68,8 +68,8 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     build-options:
-      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
-      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
+      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection
+      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=ON
@@ -91,10 +91,10 @@ modules:
   - name: pybind11
     buildsystem: simple
     build-commands:
-      - python3.8 setup.py build
+      - python3 setup.py build
       - cmake -DPYBIND11_INSTALL=ON -DPYBIND11_TEST=OFF .
       - cmake --build .
-      - python3.8 setup.py install --skip-build --force --prefix=/app
+      - python3 setup.py install --skip-build --force --prefix=/app
     sources:
       - type: archive
         url: https://github.com/pybind/pybind11/archive/v2.6.2.tar.gz
