@@ -1,7 +1,7 @@
 app-id: org.tomviz.Tomviz
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
-runtime-version: '5.15-21.08'
+runtime-version: 5.15-21.08
 command: tomviz
 #For CastXML
 sdk-extensions:
@@ -28,9 +28,6 @@ modules:
     #cmake-ninja does not work
   - name: CastXML
     buildsystem: cmake
-    build-options:
-      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
-      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     config-opts:
       - -DCLANG_LINK_CLANG_DYLIB:BOOL=ON
       - -DLLVM_DIR=/usr/lib/sdk/llvm13/lib/cmake/llvm
@@ -49,9 +46,6 @@ modules:
   - name: Eigen3
     buildsystem: cmake-ninja
     builddir: true
-    build-options:
-      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
-      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     sources:
       - type: archive
         url: https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
@@ -67,9 +61,6 @@ modules:
   - name: lapack
     buildsystem: cmake-ninja
     builddir: true
-    build-options:
-      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection
-      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=ON
@@ -78,8 +69,8 @@ modules:
       - -DCBLAS=ON
     sources:
       - type: archive
-        url: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.10.0.tar.gz
-        sha256: 328c1bea493a32cac5257d84157dc686cc3ab0b004e2bea22044e0a59f6f8a19
+        url: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.10.1.tar.gz
+        sha256: cd005cd021f144d7d5f7f33c943942db9f03a28d110d6a3b80d718a295f7f714
         x-checker-data:
           type: anitya
           project-id: 1534
@@ -107,8 +98,8 @@ modules:
       - python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/64/4a/b008d1f8a7b9f5206ecf70a53f84e654707e7616a771d84c05151a4713e9/numpy-1.22.3.zip
-        sha256: dbc7601a3b7472d559dc7b933b18b4b66f9aa7452c120e87dfb33d02008c8a18
+        url: https://files.pythonhosted.org/packages/13/b1/0c22aa7ca1deda4915cdec9562f839546bb252eecf6ad596eaec0592bd35/numpy-1.23.1.tar.gz
+        sha256: d748ef349bfef2e1194b59da37ed5a29c19ea8d7e6342019921ba2ba4fd8b624
         x-checker-data:
           type: pypi
           name: numpy
@@ -126,8 +117,8 @@ modules:
         LDFLAGS: -shared
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/b4/a2/4faa34bf0cdbefd5c706625f1234987795f368eb4e97bde9d6f46860843e/scipy-1.8.0.tar.gz
-        sha256: 31d4f2d6b724bc9a98e527b5849b8a7e589bf1ea630c33aa563eda912c9ff0bd
+        url: https://files.pythonhosted.org/packages/26/b5/9330f004b9a3b2b6a31f59f46f1617ce9ca15c0e7fe64288c20385a05c9d/scipy-1.8.1.tar.gz
+        sha256: 9e3fb1b0e896f14a85aa9a28d5f755daaeeb54c897b746df7a55ccb02b340f33
         x-checker-data:
           type: pypi
           name: scipy
@@ -193,9 +184,6 @@ modules:
 
   - name: TBB
     buildsystem: cmake
-    build-options:
-      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
-      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     builddir: true
     sources:
       - type: archive
@@ -208,9 +196,6 @@ modules:
           url-template: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v$version.tar.gz
 
   - name: SWIG
-    build-options:
-      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
-      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     config-opts:
       - --without-pcre
       - --disable-ccache
@@ -235,9 +220,6 @@ modules:
 
   - name: gdcm
     buildsystem: cmake-ninja
-    build-options:
-      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
-      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     builddir: true
     config-opts:
       - -DGDCM_BUILD_APPLICATIONS=OFF
@@ -250,8 +232,8 @@ modules:
       - -DGDCM_BUILD_DOCBOOK_MANPAGES:BOOL=OFF
     sources:
       - type: archive
-        url: https://github.com/malaterre/GDCM/archive/v3.0.12.tar.gz
-        sha256: 4709ee5acce9ee69727bc8664ef7a13f4a3bbb8d48d1c3a0468241d0ac1ac977
+        url: https://github.com/malaterre/GDCM/archive/v3.0.14.tar.gz
+        sha256: 12582a87a1f043ce77005590ef1060e92ad36ec07ccf132da49c59f857d413ee
         x-checker-data:
           type: anitya
           project-id: 883
@@ -264,9 +246,6 @@ modules:
     # ParaView does not support ARM CPU yet.
   - name: OpenChemistry-Paraview
     buildsystem: cmake
-    build-options:
-      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -ffat-lto-objects
-      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -ffat-lto-objects
     builddir: true
     config-opts:
       - -DPARAVIEW_BUILD_QT_GUI:BOOL=ON
@@ -305,9 +284,6 @@ modules:
 
   - name: ITK
     buildsystem: cmake
-    build-options:
-      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
-      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE:STRING=Release
@@ -345,9 +321,6 @@ modules:
 
   - name: Tomviz
     buildsystem: cmake
-    build-options:
-      cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
-      cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto -fno-fat-lto-objects
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE:STRING=Release
@@ -355,6 +328,9 @@ modules:
       - type: archive
         url: https://github.com/OpenChemistry/tomviz/releases/download/1.10.0/tomviz-1.10.0.tar.gz
         sha256: be7510dd5068f30d8334546382b58c4b2e15e04cb60288d29b560f45f6c60209
+      #- type: git
+        #url: https://github.com/OpenChemistry/tomviz.git
+        #commit: c14592e72ad927cb6b8528d019b6aff883f15de8
         x-checker-data:
           type: anitya
           project-id: 223480
