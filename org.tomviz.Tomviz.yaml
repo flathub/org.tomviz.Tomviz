@@ -274,8 +274,8 @@ modules:
       - type: archive
         url: https://www.paraview.org/files/v5.10/ParaView-v5.10.1.tar.gz
         sha256: 59ca46a929a52d8abec107b72e19447cba3d8e64871b6fbc8e99b0f3b167db46
-      - type: patch
-        path: paraview-5.9.0-gcc11-include.patch #https://bugs.gentoo.org/788055
+      #- type: patch
+        #path: paraview-5.9.0-gcc11-include.patch #https://bugs.gentoo.org/788055
         # There is issue with flathub bot not able to clone paraview fork from openchemistry.
         # https://github.com/flathub/backend/issues/50
         # So use upstream paraview and apply any change with patch.
