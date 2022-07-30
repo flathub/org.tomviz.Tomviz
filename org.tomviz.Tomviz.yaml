@@ -1,15 +1,12 @@
 app-id: org.tomviz.Tomviz
 runtime: org.kde.Platform
 sdk: org.kde.Sdk
-runtime-version: 5.15-21.08
+runtime-version: '5.1-21.08'
 command: tomviz
 #For CastXML
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm13
+  - org.freedesktop.Sdk.Extension.llvm11
 # GLEW does not support Wayland yet.
-build-options:
-  cflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection
-  cxxflags: -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -33,7 +30,7 @@ modules:
     buildsystem: cmake
     config-opts:
       - -DCLANG_LINK_CLANG_DYLIB:BOOL=ON
-      - -DLLVM_DIR=/usr/lib/sdk/llvm13/lib/cmake/llvm
+      - -DLLVM_DIR=/usr/lib/sdk/llvm11/lib/cmake/llvm
     sources:
       - type: archive
         url: https://github.com/CastXML/CastXML/archive/v0.4.5.tar.gz
@@ -85,10 +82,10 @@ modules:
   - name: pybind11
     buildsystem: simple
     build-commands:
-      - python3 setup.py build
+      - python3.8 setup.py build
       - cmake -DPYBIND11_INSTALL=ON -DPYBIND11_TEST=OFF .
       - cmake --build .
-      - python3 setup.py install --skip-build --force --prefix=/app
+      - python3.8 setup.py install --skip-build --force --prefix=/app
     sources:
       - type: archive
         url: https://github.com/pybind/pybind11/archive/v2.6.2.tar.gz
@@ -101,8 +98,8 @@ modules:
       - python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/13/b1/0c22aa7ca1deda4915cdec9562f839546bb252eecf6ad596eaec0592bd35/numpy-1.23.1.tar.gz
-        sha256: d748ef349bfef2e1194b59da37ed5a29c19ea8d7e6342019921ba2ba4fd8b624
+        url: https://files.pythonhosted.org/packages/64/4a/b008d1f8a7b9f5206ecf70a53f84e654707e7616a771d84c05151a4713e9/numpy-1.22.3.zip
+        sha256: dbc7601a3b7472d559dc7b933b18b4b66f9aa7452c120e87dfb33d02008c8a18
         x-checker-data:
           type: pypi
           name: numpy
@@ -120,8 +117,8 @@ modules:
         LDFLAGS: -shared
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/26/b5/9330f004b9a3b2b6a31f59f46f1617ce9ca15c0e7fe64288c20385a05c9d/scipy-1.8.1.tar.gz
-        sha256: 9e3fb1b0e896f14a85aa9a28d5f755daaeeb54c897b746df7a55ccb02b340f33
+        url: https://files.pythonhosted.org/packages/b4/a2/4faa34bf0cdbefd5c706625f1234987795f368eb4e97bde9d6f46860843e/scipy-1.8.0.tar.gz
+        sha256: 31d4f2d6b724bc9a98e527b5849b8a7e589bf1ea630c33aa563eda912c9ff0bd
         x-checker-data:
           type: pypi
           name: scipy
@@ -143,10 +140,10 @@ modules:
           - python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/88/9f/161f08131abf7f23920cee29b691de27f10fd97ac09fb2f3532b3a7f9b96/pythran-0.11.0.tar.gz
-            sha256: 0b2cba712e09f7630879dff69f268460bfe34a6d6000451b47d598558a92a875
-          #- type: patch
-            #path: remove_pytest-runner.patch
+            url: https://files.pythonhosted.org/packages/c6/e6/986a967dcca91d89e36f4d4a2f69a052030bce01a7cd48a6b7fba1a50189/pythran-0.9.12.post1.tar.gz
+            sha256: e7589cf83b0befa9a1b55e98223caf89aff887d9e3f14be912cf8703a717f185
+          - type: patch
+            path: remove_pytest-runner.patch
             x-checker-data:
               type: pypi
               name: pythran
@@ -235,8 +232,8 @@ modules:
       - -DGDCM_BUILD_DOCBOOK_MANPAGES:BOOL=OFF
     sources:
       - type: archive
-        url: https://github.com/malaterre/GDCM/archive/v3.0.14.tar.gz
-        sha256: 12582a87a1f043ce77005590ef1060e92ad36ec07ccf132da49c59f857d413ee
+        url: https://github.com/malaterre/GDCM/archive/v3.0.12.tar.gz
+        sha256: 4709ee5acce9ee69727bc8664ef7a13f4a3bbb8d48d1c3a0468241d0ac1ac977
         x-checker-data:
           type: anitya
           project-id: 883
@@ -251,15 +248,15 @@ modules:
     buildsystem: cmake
     builddir: true
     config-opts:
-      - -DPARAVIEW_BUILD_QT_GUI:BOOL=OFF
-      - -DPARAVIEW_ENABLE_QT_SUPPORT:BOOL=OFF
+      - -DPARAVIEW_BUILD_QT_GUI:BOOL=ON
+      - -DPARAVIEW_ENABLE_QT_SUPPORT:BOOL=ON
       - -DPARAVIEW_BUILD_SHARED_LIBS:BOOL=ON
       - -DPARAVIEW_BUILD_TESTING:BOOL=OFF
       - -DVTK_PYTHON_FULL_THREADSAFE:BOOL=ON
       - -DVTK_NO_PYTHON_THREADS:BOOL=OFF
       - -DPARAVIEW_USE_PYTHON:BOOL=ON
       - -DPARAVIEW_ENABLE_COMMANDLINE_TOOLS:BOOL=OFF
-      - -DPARAVIEW_ENABLE_WEB:BOOL=OFF
+      - -DPARAVIEW_ENABLE_WEB:BOOL=ON
       - -DPARAVIEW_USE_QTHELP:BOOL=OFF
       - -DPARAVIEW_USE_VTKM:BOOL=OFF
       - -DPARAVIEW_PLUGINS_DEFAULT:BOOL=OFF
@@ -285,7 +282,6 @@ modules:
         # So use upstream paraview and apply any change with patch.
       #- type: patch
         #path: apply-openchemistry-paraview.patch
-
 
   - name: ITK
     buildsystem: cmake
@@ -333,9 +329,6 @@ modules:
       - type: archive
         url: https://github.com/OpenChemistry/tomviz/releases/download/1.10.0/tomviz-1.10.0.tar.gz
         sha256: be7510dd5068f30d8334546382b58c4b2e15e04cb60288d29b560f45f6c60209
-      #- type: git
-        #url: https://github.com/OpenChemistry/tomviz.git
-        #commit: c14592e72ad927cb6b8528d019b6aff883f15de8
         x-checker-data:
           type: anitya
           project-id: 223480
