@@ -140,10 +140,8 @@ modules:
           - python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/c6/e6/986a967dcca91d89e36f4d4a2f69a052030bce01a7cd48a6b7fba1a50189/pythran-0.9.12.post1.tar.gz
-            sha256: e7589cf83b0befa9a1b55e98223caf89aff887d9e3f14be912cf8703a717f185
-          - type: patch
-            path: remove_pytest-runner.patch
+            url: https://files.pythonhosted.org/packages/88/9f/161f08131abf7f23920cee29b691de27f10fd97ac09fb2f3532b3a7f9b96/pythran-0.11.0.tar.gz
+            sha256: 0b2cba712e09f7630879dff69f268460bfe34a6d6000451b47d598558a92a875
             x-checker-data:
               type: pypi
               name: pythran
