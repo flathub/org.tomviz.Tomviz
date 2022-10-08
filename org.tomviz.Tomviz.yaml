@@ -33,8 +33,8 @@ modules:
       - -DLLVM_DIR=/usr/lib/sdk/llvm11/lib/cmake/llvm
     sources:
       - type: archive
-        url: https://github.com/CastXML/CastXML/archive/v0.4.5.tar.gz
-        sha256: 007f6d073165e150df0e40e1ec331f6f94304684af9eed3b0e5dabaebcfb1197
+        url: https://github.com/CastXML/CastXML/archive/v0.4.6.tar.gz
+        sha256: 8dcdbc1f23a130e4bdb0b09f57c30761a02a346b4db4037555048af2a293d66a
         x-checker-data:
           type: anitya
           project-id: 9347
@@ -98,8 +98,8 @@ modules:
       - python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/64/4a/b008d1f8a7b9f5206ecf70a53f84e654707e7616a771d84c05151a4713e9/numpy-1.22.3.zip
-        sha256: dbc7601a3b7472d559dc7b933b18b4b66f9aa7452c120e87dfb33d02008c8a18
+        url: https://files.pythonhosted.org/packages/0a/88/f4f0c7a982efdf7bf22f283acf6009b29a9cc5835b684a49f8d3a4adb22f/numpy-1.23.3.tar.gz
+        sha256: 51bf49c0cd1d52be0a240aa66f3458afc4b95d8993d2d04f0d91fa60c10af6cd
         x-checker-data:
           type: pypi
           name: numpy
@@ -117,8 +117,8 @@ modules:
         LDFLAGS: -shared
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/b4/a2/4faa34bf0cdbefd5c706625f1234987795f368eb4e97bde9d6f46860843e/scipy-1.8.0.tar.gz
-        sha256: 31d4f2d6b724bc9a98e527b5849b8a7e589bf1ea630c33aa563eda912c9ff0bd
+        url: https://files.pythonhosted.org/packages/db/af/16906139f52bc6866c43401869ce247662739ad71afa11c6f18505eb0546/scipy-1.9.1.tar.gz
+        sha256: 26d28c468900e6d5fdb37d2812ab46db0ccd22c63baa095057871faa3a498bc9
         x-checker-data:
           type: pypi
           name: scipy
@@ -187,8 +187,8 @@ modules:
     builddir: true
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.5.0.tar.gz
-        sha256: e5b57537c741400cf6134b428fc1689a649d7d38d9bb9c1b6d64f092ea28178a
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.7.0.tar.gz
+        sha256: 2cae2a80cda7d45dc7c072e4295c675fff5ad8316691f26f40539f7e7e54c0cc
         x-checker-data:
           type: anitya
           project-id: 227581
@@ -232,8 +232,8 @@ modules:
       - -DGDCM_BUILD_DOCBOOK_MANPAGES:BOOL=OFF
     sources:
       - type: archive
-        url: https://github.com/malaterre/GDCM/archive/v3.0.12.tar.gz
-        sha256: 4709ee5acce9ee69727bc8664ef7a13f4a3bbb8d48d1c3a0468241d0ac1ac977
+        url: https://github.com/malaterre/GDCM/archive/v3.0.19.tar.gz
+        sha256: 52ee78a70aaee7e179d584c1b7116da607dbc59905c833dadbd85944c301769a
         x-checker-data:
           type: anitya
           project-id: 883
