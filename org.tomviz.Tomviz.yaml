@@ -34,7 +34,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/CastXML/CastXML/archive/v0.4.7.tar.gz
-        sha256: d7287574378a75708cdb640214931cdb90a5f67ccadb995741481929f816b67b
+        sha256: 09f3b6df6a620ce5efdc6746cba7a337e9dd6503553814e82de20cb39c0d0ba9
         x-checker-data:
           type: anitya
           project-id: 9347
