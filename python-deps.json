@@ -4,25 +4,6 @@
     "build-commands": [],
     "modules": [
         {
-            "name": "python3-pyFFTW",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python3 -mpip  install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"pyFFTW\" --no-build-isolation"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/ce/b8/c170db50ec49d5845bd771bc5549fe734ee73083c5c52791915f95d8e2bc/numpy-1.24.1.tar.gz",
-                    "sha256": "2386da9a471cc00a1f47845e27d916d5ec5346ae9696e01a8a34760858fe9dd2"
-                },
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/18/a1/5eb99c183af0a49bf632fed3260a6cad3f7978bb19fd661a573d3728a986/pyFFTW-0.13.0.tar.gz",
-                    "sha256": "da85102405c0bd95d57eb19e99b01a0729d8406cb204c3900894b873784253da"
-                }
-            ]
-        },
-        {
             "name": "python3-meson-python",
             "buildsystem": "simple",
             "build-commands": [

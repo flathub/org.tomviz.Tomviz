@@ -58,28 +58,30 @@ modules:
     cleanup:
       - '*'
 
-  - name: lapack
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=ON
-      - -DBUILD_TESTING=OFF
-      - -DLAPACKE=ON
-      - -DCBLAS=ON
-    sources:
-      - type: archive
-        url: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.11.tar.gz
-        sha256: 5a5b3bac27709d8c66286b7a0d1d7bf2d7170ec189a1a756fdf812c97aa7fd10
-        # x-checker-data:
-        #   type: anitya
-        #   project-id: 1534
-        #   stable-only: true
-        #   url-template: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v$version.tar.gz
-    cleanup:
-      - /lib/cmake
+  # - name: lapack
+  #   buildsystem: cmake-ninja
+  #   builddir: true
+  #   config-opts:
+  #     - -DCMAKE_BUILD_TYPE=Release
+  #     - -DBUILD_SHARED_LIBS=ON
+  #     - -DBUILD_TESTING=OFF
+  #     - -DLAPACKE=ON
+  #     - -DCBLAS=ON
+  #   sources:
+  #     - type: archive
+  #       url: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.11.tar.gz
+  #       sha256: 5a5b3bac27709d8c66286b7a0d1d7bf2d7170ec189a1a756fdf812c97aa7fd10
+  #       # x-checker-data:
+  #       #   type: anitya
+  #       #   project-id: 1534
+  #       #   stable-only: true
+  #       #   url-template: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v$version.tar.gz
+  #   cleanup:
+  #     - /lib/cmake
 
   - name: openblas
+    ensure-writable:
+      - /app/include/cblas.h
     no-autogen: true
     make-args:
       - DYNAMIC_ARCH=1
@@ -115,18 +117,19 @@ modules:
           stable-only: true
           url-template: https://github.com/pybind/pybind11/archive/v$version.tar.gz
 
-  - name: python-numpy
-    buildsystem: simple
-    build-commands:
-      - python3 setup.py install --prefix=/app --root=/
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/ce/b8/c170db50ec49d5845bd771bc5549fe734ee73083c5c52791915f95d8e2bc/numpy-1.24.1.tar.gz
-        sha256: 2386da9a471cc00a1f47845e27d916d5ec5346ae9696e01a8a34760858fe9dd2
-        x-checker-data:
-          type: pypi
-          name: numpy
+  # - name: python-numpy
+  #   buildsystem: simple
+  #   build-commands:
+  #     - python3 setup.py install --prefix=/app --root=/
+  #   sources:
+  #     - type: archive
+  #       url: https://files.pythonhosted.org/packages/ce/b8/c170db50ec49d5845bd771bc5549fe734ee73083c5c52791915f95d8e2bc/numpy-1.24.1.tar.gz
+  #       sha256: 2386da9a471cc00a1f47845e27d916d5ec5346ae9696e01a8a34760858fe9dd2
+  #       x-checker-data:
+  #         type: pypi
+  #         name: numpy
 
+    # python3 flatpak-pip-generator pyFFTW meson-python pythran scipy -o python-deps
   - python-deps.json
 
   # - name: python-scipy
@@ -206,17 +209,17 @@ modules:
   #             type: pypi
   #             name: ply
 
-  # - name: python-FFTW
-  #   buildsystem: simple
-  #   build-commands:
-  #     - python3 setup.py install --prefix=/app --root=/ --optimize=1
-  #   sources:
-  #     - type: archive
-  #       url: https://files.pythonhosted.org/packages/18/a1/5eb99c183af0a49bf632fed3260a6cad3f7978bb19fd661a573d3728a986/pyFFTW-0.13.0.tar.gz
-  #       sha256: da85102405c0bd95d57eb19e99b01a0729d8406cb204c3900894b873784253da
-  #       x-checker-data:
-  #         type: pypi
-  #         name: pyFFTW
+  - name: python-FFTW
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --prefix=/app --root=/ --optimize=1
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/18/a1/5eb99c183af0a49bf632fed3260a6cad3f7978bb19fd661a573d3728a986/pyFFTW-0.13.0.tar.gz
+        sha256: da85102405c0bd95d57eb19e99b01a0729d8406cb204c3900894b873784253da
+        x-checker-data:
+          type: pypi
+          name: pyFFTW
 
   - name: TBB
     buildsystem: cmake
@@ -318,43 +321,30 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE:STRING=Release
       - -DBUILD_TESTING:BOOL=OFF
       - -DPARAVIEW_USE_QT:BOOL=ON
-      # - -DPARAVIEW_USE_QTHELP:BOOL=ON
-      # - -DPARAVIEW_USE_QTWEBENGINE:BOOL=ON
       - -DPARAVIEW_USE_PYTHON:BOOL=ON
-      - -DPARAVIEW_ENABLE_WEB:BOOL=ON
-      - -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION:BOOL=ON
-      - -DVTK_PYTHON_OPTIONAL_LINK:BOOL=OFF
-      - -DVTK_OPENGL_HAS_OSMESA:BOOL=OFF
+      # - -DPARAVIEW_ENABLE_WEB:BOOL=ON
+      # - -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION:BOOL=ON
+      # - -DVTK_PYTHON_OPTIONAL_LINK:BOOL=OFF
+      # - -DVTK_OPENGL_HAS_OSMESA:BOOL=OFF
       - -DBUILD_EXAMPLES:BOOL=ON
-      - -DPARAVIEW_PLUGINS_DEFAULT:BOOL=ON
+      # - -DPARAVIEW_PLUGINS_DEFAULT:BOOL=ON
       - -DVTK_SMP_IMPLEMENTATION_TYPE:STRING=TBB
-      - -DVTK_PYTHON_VERSION:STRING=3
-      - -DVTK_PYTHON_FULL_THREADSAFE:BOOL=ON
-      - -DVTK_NO_PYTHON_THREADS:BOOL=OFF
+      # - -DVTK_PYTHON_VERSION:STRING=3
+      # - -DVTK_PYTHON_FULL_THREADSAFE:BOOL=ON
+      # - -DVTK_NO_PYTHON_THREADS:BOOL=OFF
       - -DQtTesting_INSTALL_NO_DEVELOPMENT:BOOL=ON
-      - -DVTK_BUILD_QT_DESIGNER_PLUGIN:BOOL=OFF
+      # - -DVTK_BUILD_QT_DESIGNER_PLUGIN:BOOL=OFF
       - -DPARAVIEW_INSTALL_DEVELOPMENT_FILES:BOOL=ON
       - -DPARAVIEW_BUILD_WITH_EXTERNAL:BOOL=OFF
       - -DPARAVIEW_ENABLE_FFMPEG:BOOL=ON
-      # - -DPARAVIEW_ENABLE_VISITBRIDGE:BOOL=ON
-      # - -DPARAVIEW_ENABLE_RAYTRACING:BOOL=ON
-      # - -DPARAVIEW_USE_MPI:BOOL=ON
-      #- -DPARAVIEW_USE_CUDA:BOOL=ON
       - -DHDF5_ENABLE_OPTIMIZATION:BOOL=ON
       - -DPARAVIEW_ENABLE_XDMF2:BOOL=ON
       - -DPARAVIEW_ENABLE_XDMF3:BOOL=ON
       - -DPARAVIEW_ENABLE_ADIOS2:BOOL=OFF
       - -DPARAVIEW_ENABLE_FIDES:BOOL=ON
       - -DPARAVIEW_ENABLE_FFMPEG:BOOL=ON
-      # - -DPARAVIEW_ENABLE_GDAL:BOOL=ON
-      # - -DPARAVIEW_ENABLE_LAS:BOOL=ON
-      # - -DPARAVIEW_ENABLE_OPENTURNS:BOOL=ON
-      # - -DPARAVIEW_ENABLE_PDAL:BOOL=ON
-      # - -DPARAVIEW_ENABLE_MOTIONFX:BOOL=ON
-      # - -DPARAVIEW_USE_MEMKIND:BOOL=ON
       - -DPARAVIEW_USE_VTKM:BOOL=ON
     sources:
       - type: archive
@@ -375,25 +365,25 @@ modules:
     buildsystem: cmake
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE:STRING=Release
-      - -DITK_LEGACY_REMOVE:BOOL=ON
-      - -DITK_LEGACY_SILENT:BOOL=ON
-      - -DModule_ITKBridgeNumPy:BOOL=ON
+      # - -DCMAKE_BUILD_TYPE:STRING=Release
+      # - -DITK_LEGACY_REMOVE:BOOL=ON
+      # - -DITK_LEGACY_SILENT:BOOL=ON
+      # - -DModule_ITKBridgeNumPy:BOOL=ON
       - -DBUILD_TESTING:BOOL=OFF
-      - -DITK_WRAP_unsigned_short:BOOL=ON
-      - -DITK_WRAP_rgb_unsigned_char:BOOL=OFF
-      - -DITK_WRAP_rgba_unsigned_char:BOOL=OFF
+      # - -DITK_WRAP_unsigned_short:BOOL=ON
+      # - -DITK_WRAP_rgb_unsigned_char:BOOL=OFF
+      # - -DITK_WRAP_rgba_unsigned_char:BOOL=OFF
       - -DITK_BUILD_DEFAULT_MODULES:BOOL=OFF
       - -DITKGroup_Core:BOOL=ON
-      - -DITKGroup_Filtering:BOOL=ON
-      - -DITKGroup_Segmentation:BOOL=ON
-      - -DITKGroup_Nonunit:BOOL=ON
-      - -DPython_ADDITIONAL_VERSIONS:STRING=3
-      - -DITK_WRAP_PYTHON:BOOL=ON
+      # - -DITKGroup_Filtering:BOOL=ON
+      # - -DITKGroup_Segmentation:BOOL=ON
+      # - -DITKGroup_Nonunit:BOOL=ON
+      # - -DPython_ADDITIONAL_VERSIONS:STRING=3
+      # - -DITK_WRAP_PYTHON:BOOL=ON
       - -DBUILD_EXAMPLES:BOOL=OFF
       - -DBUILD_SHARED_LIBS:BOOL=ON
       - -DITK_USE_SYSTEM_LIBRARIES:BOOL=ON
-      - -DITK_USE_SYSTEM_CASTXML:BOOL=ON
+      # - -DITK_USE_SYSTEM_CASTXML:BOOL=ON
       - -DITK_USE_SYSTEM_GDCM:BOOL=ON
       - -DITK_USE_SYSTEM_SWIG:BOOL=ON
       - -DITK_USE_SYSTEM_VXL:BOOL=OFF
