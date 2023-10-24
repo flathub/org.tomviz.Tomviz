@@ -30,7 +30,7 @@ modules:
     buildsystem: cmake
     config-opts:
       - -DCLANG_LINK_CLANG_DYLIB:BOOL=ON
-      - -DLLVM_DIR=/usr/lib/sdk/llvm11/lib/cmake/llvm
+      - -DLLVM_DIR=/usr/lib/sdk/llvm16/lib/cmake/llvm
     sources:
       - type: archive
         url: https://github.com/CastXML/CastXML/archive/v0.4.5.tar.gz
