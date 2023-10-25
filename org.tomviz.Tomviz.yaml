@@ -5,7 +5,7 @@ runtime-version: 5.15-23.08
 command: tomviz
 #For CastXML
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm17
+  - org.freedesktop.Sdk.Extension.llvm16
 # GLEW does not support Wayland yet.
 finish-args:
   - --share=ipc
@@ -30,8 +30,7 @@ modules:
     buildsystem: cmake
     config-opts:
       - -DCLANG_LINK_CLANG_DYLIB:BOOL=ON
-      - -DLLVM_DIR=/usr/lib/sdk/llvm17/lib/cmake/llvm
-      - -DCLANG_RESOURCE_DIR=/usr/lib/sdk/llvm17/lib/clang/17
+      - -DLLVM_DIR=/usr/lib/sdk/llvm16/lib/cmake/llvm
     sources:
       - type: archive
         url: https://github.com/CastXML/CastXML/archive/v0.6.2.tar.gz
