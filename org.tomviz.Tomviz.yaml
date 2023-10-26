@@ -83,10 +83,10 @@ modules:
   - name: pybind11
     buildsystem: simple
     build-commands:
-      - python3.10 setup.py build
+      - python3.12 setup.py build
       - cmake -DPYBIND11_INSTALL=ON -DPYBIND11_TEST=OFF .
       - cmake --build .
-      - python3.10 setup.py install --skip-build --force --prefix=/app
+      - python3.12 setup.py install --skip-build --force --prefix=/app
     sources:
       - type: archive
         url: https://github.com/pybind/pybind11/archive/v2.6.2.tar.gz
@@ -228,7 +228,7 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
       - -DGDCM_WRAP_PYTHON=ON
       - -DPYTHON_EXECUTABLE=/usr/bin/python3
-      - -DGDCM_INSTALL_PYTHONMODULE_DIR=/app/lib/python3.10/site-packages/
+      - -DGDCM_INSTALL_PYTHONMODULE_DIR=/app/lib/python3.12/site-packages/
       - -DGDCM_USE_VTK=OFF
       - -DGDCM_BUILD_DOCBOOK_MANPAGES:BOOL=OFF
     sources:
