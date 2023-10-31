@@ -107,8 +107,8 @@ modules:
   - name: python-scipy
     buildsystem: simple
     build-commands:
-      - python3 setup.py build -j 0
-      - python3 setup.py install --prefix=/app --root=/ --optimize=1
+      - python3 _setup.py build -j 0
+      - python3 _setup.py install --prefix=/app --root=/ --optimize=1
     build-options:
       env:
         ATLAS: None
