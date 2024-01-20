@@ -33,8 +33,8 @@ modules:
       - -DLLVM_DIR=/usr/lib/sdk/llvm11/lib/cmake/llvm
     sources:
       - type: archive
-        url: https://github.com/CastXML/CastXML/archive/v0.4.5.tar.gz
-        sha256: 007f6d073165e150df0e40e1ec331f6f94304684af9eed3b0e5dabaebcfb1197
+        url: https://github.com/CastXML/CastXML/archive/v0.6.3.tar.gz
+        sha256: 057485afdc8ca0536841cc7b4178a3792ed4dc107be24547dc75b80efc807166
         x-checker-data:
           type: anitya
           project-id: 9347
@@ -69,8 +69,8 @@ modules:
       - -DCBLAS=ON
     sources:
       - type: archive
-        url: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.10.1.tar.gz
-        sha256: cd005cd021f144d7d5f7f33c943942db9f03a28d110d6a3b80d718a295f7f714
+        url: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.12.0.tar.gz
+        sha256: eac9570f8e0ad6f30ce4b963f4f033f0f643e7c3912fc9ee6cd99120675ad48b
         x-checker-data:
           type: anitya
           project-id: 1534
@@ -98,8 +98,8 @@ modules:
       - python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/64/4a/b008d1f8a7b9f5206ecf70a53f84e654707e7616a771d84c05151a4713e9/numpy-1.22.3.zip
-        sha256: dbc7601a3b7472d559dc7b933b18b4b66f9aa7452c120e87dfb33d02008c8a18
+        url: https://files.pythonhosted.org/packages/d0/b0/13e2b50c95bfc1d5ee04925eb5c105726c838f922d0aaddd57b7c8be0f8b/numpy-1.26.3.tar.gz
+        sha256: 697df43e2b6310ecc9d95f05d5ef20eacc09c7c4ecc9da3f235d39e71b7da1e4
         x-checker-data:
           type: pypi
           name: numpy
@@ -117,8 +117,8 @@ modules:
         LDFLAGS: -shared
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/b4/a2/4faa34bf0cdbefd5c706625f1234987795f368eb4e97bde9d6f46860843e/scipy-1.8.0.tar.gz
-        sha256: 31d4f2d6b724bc9a98e527b5849b8a7e589bf1ea630c33aa563eda912c9ff0bd
+        url: https://files.pythonhosted.org/packages/6e/1f/91144ba78dccea567a6466262922786ffc97be1e9b06ed9574ef0edc11e1/scipy-1.11.4.tar.gz
+        sha256: 90a2b78e7f5733b9de748f589f09225013685f9b218275257f8a8168ededaeaa
         x-checker-data:
           type: pypi
           name: scipy
@@ -129,8 +129,8 @@ modules:
           - python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/48/a3/0bd844c54ae8141642088b7ae09dd38fec2ec7faa9b7d25bb6a23c1f266f/gast-0.5.3.tar.gz
-            sha256: cfbea25820e653af9c7d1807f659ce0a0a9c64f2439421a7bba4f0983f532dea
+            url: https://files.pythonhosted.org/packages/e4/41/f26f62ebef1a80148e20951a6e9ef4d0ebbe2090124bc143da26e12a934c/gast-0.5.4.tar.gz
+            sha256: 9c270fe5f4b130969b54174de7db4e764b09b4f7f67ccfc32480e29f78348d97
             x-checker-data:
               type: pypi
               name: gast
@@ -176,8 +176,8 @@ modules:
       - python3 setup.py install --prefix=/app --root=/ --optimize=1
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/18/a1/5eb99c183af0a49bf632fed3260a6cad3f7978bb19fd661a573d3728a986/pyFFTW-0.13.0.tar.gz
-        sha256: da85102405c0bd95d57eb19e99b01a0729d8406cb204c3900894b873784253da
+        url: https://files.pythonhosted.org/packages/9f/bc/7376df0393e816b60bdc627fc8f653706f4caa95bcf79d07302a672f893e/pyFFTW-0.13.1.tar.gz
+        sha256: 09155e90a0c6d0c1f2d1f3668180a7de95fb9f83fef5137a112fb05978e87320
         x-checker-data:
           type: pypi
           name: pyFFTW
@@ -187,8 +187,8 @@ modules:
     builddir: true
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.5.0.tar.gz
-        sha256: e5b57537c741400cf6134b428fc1689a649d7d38d9bb9c1b6d64f092ea28178a
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.11.0.tar.gz
+        sha256: 782ce0cab62df9ea125cdea253a50534862b563f1d85d4cda7ad4e77550ac363
         x-checker-data:
           type: anitya
           project-id: 227581
@@ -232,8 +232,8 @@ modules:
       - -DGDCM_BUILD_DOCBOOK_MANPAGES:BOOL=OFF
     sources:
       - type: archive
-        url: https://github.com/malaterre/GDCM/archive/v3.0.12.tar.gz
-        sha256: 4709ee5acce9ee69727bc8664ef7a13f4a3bbb8d48d1c3a0468241d0ac1ac977
+        url: https://github.com/malaterre/GDCM/archive/v3.0.23.tar.gz
+        sha256: 55dbfbd740f9a09e8e873bfe206a707fb323f87bdc4f708cf9383ca1ab907648
         x-checker-data:
           type: anitya
           project-id: 883
@@ -312,8 +312,8 @@ modules:
       - -DITK_FORBID_DOWNLOADS=ON
     sources:
       - type: archive
-        url: https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v5.2.1.tar.gz
-        sha256: 6022b2b64624b8bcec3333fe48d5f74ff6ebceb3bdf98258ba7d7fbbc76b99ab
+        url: https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v5.3.0.tar.gz
+        sha256: 64e7e8094a5023c8f68ee042459d6319581fadb35e2fe90a4ae230ce36369db1
         x-checker-data:
           type: anitya
           project-id: 223473
