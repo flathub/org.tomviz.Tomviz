@@ -33,8 +33,8 @@ modules:
       - -DLLVM_DIR=/usr/lib/sdk/llvm11/lib/cmake/llvm
     sources:
       - type: archive
-        url: https://github.com/CastXML/CastXML/archive/v0.4.5.tar.gz
-        sha256: 007f6d073165e150df0e40e1ec331f6f94304684af9eed3b0e5dabaebcfb1197
+        url: https://github.com/CastXML/CastXML/archive/v0.6.13.tar.gz
+        sha256: df954886464fe624887411e5f4e2a7db00da3d64a48f142d3aff973e2097e2d6
         x-checker-data:
           type: anitya
           project-id: 9347
@@ -48,8 +48,8 @@ modules:
     builddir: true
     sources:
       - type: archive
-        url: https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
-        sha256: b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626
+        url: https://gitlab.com/libeigen/eigen/-/archive/5.0.1/eigen-5.0.1.tar.bz2
+        sha256: e4de6b08f33fd8b8985d2f204381408c660bffa6170ac65b68ae1bd3cd575c0a
         x-checker-data:
           type: anitya
           project-id: 13751
@@ -69,8 +69,8 @@ modules:
       - -DCBLAS=ON
     sources:
       - type: archive
-        url: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.10.1.tar.gz
-        sha256: cd005cd021f144d7d5f7f33c943942db9f03a28d110d6a3b80d718a295f7f714
+        url: https://github.com/Reference-LAPACK/lapack/archive/refs/tags/v3.12.1.tar.gz
+        sha256: 2ca6407a001a474d4d4d35f3a61550156050c48016d949f0da0529c0aa052422
         x-checker-data:
           type: anitya
           project-id: 1534
@@ -98,8 +98,8 @@ modules:
       - python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/64/4a/b008d1f8a7b9f5206ecf70a53f84e654707e7616a771d84c05151a4713e9/numpy-1.22.3.zip
-        sha256: dbc7601a3b7472d559dc7b933b18b4b66f9aa7452c120e87dfb33d02008c8a18
+        url: https://files.pythonhosted.org/packages/a4/7a/6a3d14e205d292b738db449d0de649b373a59edb0d0b4493821d0a3e8718/numpy-2.4.0.tar.gz
+        sha256: 6e504f7b16118198f138ef31ba24d985b124c2c469fe8467007cf30fd992f934
         x-checker-data:
           type: pypi
           name: numpy
@@ -117,8 +117,8 @@ modules:
         LDFLAGS: -shared
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/b4/a2/4faa34bf0cdbefd5c706625f1234987795f368eb4e97bde9d6f46860843e/scipy-1.8.0.tar.gz
-        sha256: 31d4f2d6b724bc9a98e527b5849b8a7e589bf1ea630c33aa563eda912c9ff0bd
+        url: https://files.pythonhosted.org/packages/0a/ca/d8ace4f98322d01abcd52d381134344bf7b431eba7ed8b42bdea5a3c2ac9/scipy-1.16.3.tar.gz
+        sha256: 01e87659402762f43bd2fee13370553a17ada367d42e7487800bf2916535aecb
         x-checker-data:
           type: pypi
           name: scipy
@@ -129,8 +129,8 @@ modules:
           - python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/48/a3/0bd844c54ae8141642088b7ae09dd38fec2ec7faa9b7d25bb6a23c1f266f/gast-0.5.3.tar.gz
-            sha256: cfbea25820e653af9c7d1807f659ce0a0a9c64f2439421a7bba4f0983f532dea
+            url: https://files.pythonhosted.org/packages/91/f6/e73969782a2ecec280f8a176f2476149dd9dba69d5f8779ec6108a7721e6/gast-0.7.0.tar.gz
+            sha256: 0bb14cd1b806722e91ddbab6fb86bba148c22b40e7ff11e248974e04c8adfdae
             x-checker-data:
               type: pypi
               name: gast
@@ -153,8 +153,8 @@ modules:
           - python3 setup.py install --prefix=${FLATPAK_DEST} --root=/ --optimize=1
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/14/e7/50cbac38f77eca8efd39516be6651fdb9f3c4c0fab8cf2cf05f612578737/beniget-0.4.1.tar.gz
-            sha256: 75554b3b8ad0553ce2f607627dad3d95c60c441189875b98e097528f8e23ac0c
+            url: https://files.pythonhosted.org/packages/31/a9/cf7c2317da1f5034fdebe84555e14a474b3297ef2d03ad148ff02fef2e3a/beniget-0.5.0.tar.gz
+            sha256: e7af11fa8ec7de3d3eb3d98b1e722d15d44017d8b35d8aa11d54f6719b312f22
             x-checker-data:
               type: pypi
               name: beniget
@@ -176,8 +176,8 @@ modules:
       - python3 setup.py install --prefix=/app --root=/ --optimize=1
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/18/a1/5eb99c183af0a49bf632fed3260a6cad3f7978bb19fd661a573d3728a986/pyFFTW-0.13.0.tar.gz
-        sha256: da85102405c0bd95d57eb19e99b01a0729d8406cb204c3900894b873784253da
+        url: https://files.pythonhosted.org/packages/f2/2d/e38439b7f937e8bf91a9ff2b8d9713d0d8e64e980fc00e8d1945b8a5b74b/pyfftw-0.15.1.tar.gz
+        sha256: bbcde6d40d165e1cbaf12dde062ebfebe9e43394cac8c166e699ba2c9a4b0461
         x-checker-data:
           type: pypi
           name: pyFFTW
@@ -187,8 +187,8 @@ modules:
     builddir: true
     sources:
       - type: archive
-        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.5.0.tar.gz
-        sha256: e5b57537c741400cf6134b428fc1689a649d7d38d9bb9c1b6d64f092ea28178a
+        url: https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.3.0.tar.gz
+        sha256: 01598a46c1162c27253a0de0236f520fd8ee8166e9ebb84a4243574f88e6e50a
         x-checker-data:
           type: anitya
           project-id: 227581
@@ -232,8 +232,8 @@ modules:
       - -DGDCM_BUILD_DOCBOOK_MANPAGES:BOOL=OFF
     sources:
       - type: archive
-        url: https://github.com/malaterre/GDCM/archive/v3.0.12.tar.gz
-        sha256: 4709ee5acce9ee69727bc8664ef7a13f4a3bbb8d48d1c3a0468241d0ac1ac977
+        url: https://github.com/malaterre/GDCM/archive/v3.0.24.tar.gz
+        sha256: d88519a094797c645ca34797a24a14efc10965829c4c3352c8ef33782a556336
         x-checker-data:
           type: anitya
           project-id: 883
@@ -312,8 +312,8 @@ modules:
       - -DITK_FORBID_DOWNLOADS=ON
     sources:
       - type: archive
-        url: https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v5.2.1.tar.gz
-        sha256: 6022b2b64624b8bcec3333fe48d5f74ff6ebceb3bdf98258ba7d7fbbc76b99ab
+        url: https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v6.0b02.tar.gz
+        sha256: 2dcf87c830d864ce266ddb83f51238fee759c8e618f6f3e5424a0233e0e538c8
         x-checker-data:
           type: anitya
           project-id: 223473
